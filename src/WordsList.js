@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PageStyle.css';
 import bannerImage from './images/banner.png';
+import apiUrl from './config';
 
 function WordsList() {
     const [words, setWords] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:3000/words')
+        axios.get(`${apiUrl}/words`)
             .then(response => {
                 setWords(response.data);
             })

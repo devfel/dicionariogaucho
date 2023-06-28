@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PageStyle.css';
+import apiUrl from './config';
+
 
 function WordsForm() {
     const [word, setWord] = useState('');
@@ -9,7 +11,7 @@ function WordsForm() {
     const [updateId, setUpdateId] = useState(null);
 
     const fetchWords = () => {
-        axios.get('http://localhost:3000/words')
+        axios.get(`${apiUrl}/words`)
             .then(response => {
                 setWords(response.data);
             })
@@ -28,8 +30,8 @@ function WordsForm() {
 
         // Determine whether we're updating or creating, then send the appropriate request
         const request = updateId
-            ? axios.put(`http://localhost:3000/words/${updateId}`, { word, meaning })
-            : axios.post('http://localhost:3000/words', { word, meaning });
+            ? axios.put(`${apiUrl}/words/${updateId}`, { word, meaning })
+            : axios.post(`${apiUrl}/words`, { word, meaning });
 
         request.then(response => {
             console.log(response.data);
@@ -43,7 +45,7 @@ function WordsForm() {
     };
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3000/words/${id}`)
+        axios.delete(`${apiUrl}/words/${id}`)
             .then(response => {
                 console.log(response.data);
                 fetchWords();
