@@ -9,6 +9,12 @@ function WordsForm() {
     const [meaning, setMeaning] = useState('');
     const [words, setWords] = useState([]);
     const [updateId, setUpdateId] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const filteredWords = words.filter(word =>
+        word.word.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        word.meaning.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     const fetchWords = () => {
         axios.get(`${apiUrl}/words`)
@@ -63,33 +69,36 @@ function WordsForm() {
 
     return (
         <div className="container">
+            <div className="search-section-form">
+                <input type="text" placeholder="Search" onChange={e => setSearchTerm(e.target.value)} className="search-input-form" />
+            </div>
             <form onSubmit={handleSubmit} className="word-form">
                 <label className="form-label">
-                    Word:
+                    Palavra em Inglês:
                     <input type="text" value={word} onChange={e => setWord(e.target.value)} required className="form-input" />
                 </label>
                 <label className="form-label">
-                    Meaning:
+                    Significado:
                     <input type="text" value={meaning} onChange={e => setMeaning(e.target.value)} required className="form-input" />
                 </label>
-                <button type="submit" className="button">{updateId ? 'Update Word' : 'Add Word'}</button>
+                <button type="submit" className={`button ${updateId ? 'btn-act-update' : 'button'}`}>{updateId ? 'Atualizar Palavra' : 'Adicionar Palavra'}</button>
             </form>
             <table className="word-table-crud">
                 <thead>
                     <tr>
-                        <th>Word</th>
-                        <th>Meaning</th>
+                        <th>Palavra em Inglês</th>
+                        <th>Significado</th>
                         <th className="actions-col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {words.map(word => (
+                    {filteredWords.map(word => (
                         <tr key={word.id}>
                             <td>{word.word}</td>
                             <td>{word.meaning}</td>
                             <td>
-                                <button onClick={() => handleUpdate(word)} className="button btn-action">Update</button>
-                                <button onClick={() => handleDelete(word.id)} className="button btn-action">Delete</button>
+                                <button onClick={() => handleUpdate(word)} className="button btn-action btn-act-update">Atualizar</button>
+                                <button onClick={() => handleDelete(word.id)} className="button btn-action btn-act-delete">Deletar</button>
                             </td>
                         </tr>
                     ))}

@@ -19,14 +19,15 @@ function WordsList() {
     }, []);
 
     const filteredWords = words.filter(word =>
-        word.word.toLowerCase().includes(searchTerm.toLowerCase())
+        word.word.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        word.meaning.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
         <div className="list-container">
             <img src={bannerImage} alt="Banner" className="banner" />
-            <h1>O Dicionário Gaúcho</h1>
-            <h2>Gírias, palavras e o dialéto gaúcho - O gauchês raiz</h2>
+            <h1>Mateando Palavras</h1>
+            <h2>O Dicionário em Inglês da Lida Campeira</h2>
             <input type="text" placeholder="Search" onChange={e => setSearchTerm(e.target.value)} className="search-input" />
 
             <table className="words-table">

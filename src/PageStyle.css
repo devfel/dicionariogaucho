@@ -89,6 +89,24 @@ body {
 
 .btn-action {
     width: auto;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.btn-act-update {
+    background: #0000ff;
+}
+
+.btn-act-update:hover {
+    background: #0000cc;
+}
+
+.btn-act-delete {
+    background: #ff0000;
+}
+
+.btn-act-delete:hover {
+    background: #cc0000;
 }
 
 /* Table styles */
@@ -159,4 +177,27 @@ h2 {
     margin-bottom: 10px;
 
 
+}
+
+
+.search-section-form {
+    background: #8B4513;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px 0;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input-form {
+    font-size: 1em;
+    padding: 10px;
+    border: 2px solid #FAF0E6;
+    border-radius: 4px;
+    color: #FAF0E6;
+    margin: 10px;
+    max-width: 300px;
+    width: 100%;
 }
