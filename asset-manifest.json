@@ -1,16 +1,17 @@
 {
   "files": {
     "main.css": "/dicionariogaucho/static/css/main.12a5b1d3.css",
-    "main.js": "/dicionariogaucho/static/js/main.a9bb0730.js",
+    "main.js": "/dicionariogaucho/static/js/main.11d4bfba.js",
     "static/js/787.6102d87a.chunk.js": "/dicionariogaucho/static/js/787.6102d87a.chunk.js",
     "static/media/banner.png": "/dicionariogaucho/static/media/banner.fcde7687e244091939b0.png",
+    "static/media/loading.gif": "/dicionariogaucho/static/media/loading.c7d9f0819b0870f9ad8e.gif",
     "index.html": "/dicionariogaucho/index.html",
     "main.12a5b1d3.css.map": "/dicionariogaucho/static/css/main.12a5b1d3.css.map",
-    "main.a9bb0730.js.map": "/dicionariogaucho/static/js/main.a9bb0730.js.map",
+    "main.11d4bfba.js.map": "/dicionariogaucho/static/js/main.11d4bfba.js.map",
     "787.6102d87a.chunk.js.map": "/dicionariogaucho/static/js/787.6102d87a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.12a5b1d3.css",
-    "static/js/main.a9bb0730.js"
+    "static/js/main.11d4bfba.js"
   ]
 }
