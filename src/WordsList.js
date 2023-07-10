@@ -3,18 +3,23 @@ import axios from 'axios';
 import './PageStyle.css';
 import bannerImage from './images/banner.png';
 import apiUrl from './config';
+import loadingImg from './images/loading.gif';
 
 function WordsList() {
     const [words, setWords] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         axios.get(`${apiUrl}/words`)
             .then(response => {
+                setLoading(true);
                 setWords(response.data);
+                setLoading(false);
             })
             .catch(error => {
                 console.error(error);
+                setLoading(false);
             });
     }, []);
 
@@ -38,6 +43,7 @@ function WordsList() {
                     </tr>
                 </thead>
                 <tbody>
+                    {loading ? (<div><img src={loadingImg} width="70px" alt="Loading" />{"Carregando Palavras."}</div>) : null}
                     {filteredWords.map(word => (
                         <tr key={word.id}>
                             <td>{word.word}</td>

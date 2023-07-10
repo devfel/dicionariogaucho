@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PageStyle.css';
 import apiUrl from './config';
+import loadingImg from './images/loading.gif';
 
 
 function WordsForm() {
@@ -10,6 +11,7 @@ function WordsForm() {
     const [words, setWords] = useState([]);
     const [updateId, setUpdateId] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [loading, setLoading] = useState(true);
 
     const filteredWords = words.filter(word =>
         word.word.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -19,10 +21,13 @@ function WordsForm() {
     const fetchWords = () => {
         axios.get(`${apiUrl}/words`)
             .then(response => {
+                setLoading(true);
                 setWords(response.data);
+                setLoading(false);
             })
             .catch(error => {
                 console.error(error);
+                setLoading(false);
             });
     }
 
@@ -92,6 +97,7 @@ function WordsForm() {
                     </tr>
                 </thead>
                 <tbody>
+                    {loading ? (<div><img src={loadingImg} width="70px" alt="Loading" />{"Carregando Palavras."}</div>) : null}
                     {filteredWords.map(word => (
                         <tr key={word.id}>
                             <td>{word.word}</td>
